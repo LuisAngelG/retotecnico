@@ -1,0 +1,108 @@
+/*CONTAINER*/
+.content-container {
+  padding: 20px;
+  max-height: calc(100vh - 20px);
+  box-sizing: border-box;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  position: relative;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+.flag-image-large {
+  height: 50px;
+  width: 75px;
+}
+.media-body h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+}
+.media-body p {
+  font-size: 14px;
+  margin: 10px;
+  color: #666;
+}
+.row{
+  z-index: -30px;
+}
+
+/*SEARCH BAR*/
+.search-container {
+  position: relative;
+  margin: 15px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+}
+.filter-container {
+  position: flex;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 3000;
+  max-height: 300px;
+  overflow-y: auto;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.continents {
+  display: flex;
+  justify-content: space-between;
+}
+.continent {
+  text-align: center;
+}
+.continent img {
+  width: 50px;
+  height: 50px;
+}
+
+/*TARJETA FLOTANTE*/
+.modal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+}
+.regions-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.regions-label {
+  margin-right: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.subdivision-select {
+  width: auto;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}

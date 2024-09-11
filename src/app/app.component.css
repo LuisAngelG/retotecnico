@@ -1,0 +1,38 @@
+.text-center {
+  background-color: #a7a3a3;
+  font-weight: bold;
+  color: #000000;
+  padding: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.col-md-9{
+  background-color: rgb(198, 248, 231);
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: #8a8b8b;
+  top: 0;
+  width: 250px;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.nav-link.active {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+}

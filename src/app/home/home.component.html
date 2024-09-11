@@ -1,0 +1,85 @@
+<div class="content-container">
+  <div class="search-container">
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Escribe el país que deseas ver" 
+      (focus)="showFilter = true" 
+      (blur)="hideFilter()" 
+      [(ngModel)]="searchTerm"
+      (input)="filterCountries()"
+    />
+
+    <!-- FILTRO DESPLEGABLE -->
+    <div class="filter-container" *ngIf="showFilter">
+      <div class="continents">
+        <div class="continent" *ngFor="let continent of continents" (click)="selectContinent(continent.name)">
+          <div class="continent-image-container">
+            <img *ngIf="continentImages[continent.name]; else noImage" [src]="continentImages[continent.name]" alt="{{ continent.name }}" class="continent-image">
+            <ng-template #noImage>
+              <img src="path/to/default-image.jpg" alt="Imagen no disponible" class="continent-image">
+            </ng-template>
+          </div>
+          <p>{{ continent.name }}</p>
+        </div>
+      </div>
+      <a class="clean text" routerLink="/home" (click)="clearFilter()">Limpiar</a>
+    </div>
+    
+  </div>
+
+<!-- VISTA DEL LISTADO -->
+<div class="row">
+  <div class="col-md-4 mb-4 col-12" *ngFor="let country of filteredCountries"> 
+    <div class="card" (click)="showCountryDetails(country)">
+      <img *ngIf="images[country.name]" [src]="images[country.name]" class="card-img-top" alt="Image" />
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="align-self-center">
+              <img *ngIf="flags[country.name]" [src]="flags[country.name]" alt="Flag" class="flag-image-large" />
+            </div>
+            <div class="media-body text-right">
+              <h5 class="card-title">{{ country.name }}</h5>
+              <p class="card-text">{{ country.continent.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISTA DE LA TARJETA FLOTANTE -->
+<div class="modal" *ngIf="selectedCountry" (click)="closeModal()">
+  <div class="modal-content" (click)="stopPropagation($event)">
+    <img *ngIf="selectedCountry.image" [src]="selectedCountry.image" alt="Capital Image" class="card-img-top" />
+    <div class="media d-flex">
+      <div class="align-self-center">
+        <img *ngIf="flags[selectedCountry.name]" [src]="flags[selectedCountry.name]" alt="Flag" class="flag-image-large"/>
+      </div>
+      <div class="media-body text-right">
+        <h5>{{ selectedCountry.name }}</h5>
+        <p class="card-text">{{ selectedCountry.continent.name }}</p>
+      </div>
+    </div>
+    <p><strong>Capital:</strong> {{ selectedCountry.capital }}</p>
+    <p><strong>Idiomas:</strong> 
+      <span *ngFor="let language of selectedCountry.languages; let last = last">
+        {{ language.name }}<span *ngIf="!last">, </span>
+      </span>
+    </p>
+    <p><strong>Moneda:</strong> {{ selectedCountry.currency }}</p>
+    
+    <div *ngIf="selectedCountry.subdivisions && selectedCountry.subdivisions.length > 0" class="regions-container">
+      <p class="regions-label"><strong>Regiones:</strong></p>
+      <select class="subdivision-select" [(ngModel)]="selectedSubdivision">
+        <option *ngFor="let subdivision of selectedCountry.subdivisions" [value]="subdivision.name">
+          {{ subdivision.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
