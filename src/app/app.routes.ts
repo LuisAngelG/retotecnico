@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 export const routes: Routes = [
 
-    {path: '',  component:AppComponent},
+    {path: '',  component:HomeComponent},
     {path: 'home', component:HomeComponent},
     {path: 'vista1', component:Vista1Component},
     {path: 'vista2', component:Vista2Component},
