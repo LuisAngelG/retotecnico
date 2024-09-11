@@ -7,32 +7,80 @@
   text-align: center;
   border-radius: 10px;
 }
-
 .col-md-9{
   background-color: rgb(198, 248, 231);
 }
-
-.sidebar {
-  height: 100vh;
-  background-color: #8a8b8b;
-  top: 0;
-  width: 250px;
-}
-
 .nav-link:hover {
   color: #ffffff;
   background-color: transparent;
 }
-
 .nav-link {
   color: #ffffff;
   font-weight: bold;
   margin-bottom: 15px;
 }
-
 .nav-link.active {
   background-color: #fff;
   color: #000;
   font-weight: bold;
   border-radius: 10px;
+}
+
+/* Estilo común para el sidebar */
+.sidebar {
+  background-color: #8a8b8b;
+  top: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  z-index: 1000;
+}
+
+/* Estilo para la vista en web */
+.sidebar.web {
+  width: 17%;
+  transform: translateX(0);
+}
+
+/* Estilo para la vista en móvil */
+.sidebar.mobile {
+  width: 25%;
+  transform: translateX(-250px);
+}
+
+/* Muestra el sidebar cuando se activa en móvil */
+.sidebar.mobile.open {
+  transform: translateX(0);
+}
+
+/* Botón de hamburguesa */
+.toggle-btn {
+  display: none;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+}
+
+/* Media query para móviles */
+@media (max-width: 768px) {
+  .toggle-btn {
+    display: block;
+  }
+  
+  .sidebar {
+    position: fixed;
+    width: 250px;
+  }
+  
+  .sidebar.web {
+    display: none;
+  }
 }
